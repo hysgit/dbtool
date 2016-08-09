@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.Map;
 
 public class DbUtilsTool {
-    private  final QueryRunner runner = new QueryRunner();
-    private  Connection conn;
+    private final QueryRunner runner = new QueryRunner();
+    private Connection conn;
 
-    public  DbUtilsTool(String type,        //数据库类型
-                        String host,        //主机ip
-                        String port,        //主机端口
-                        String name,        //数据库名
-                        String username,    //用户名
-                        String password)    //密码
+    public DbUtilsTool(String type,        //数据库类型
+                       String host,        //主机ip
+                       String port,        //主机端口
+                       String name,        //数据库名
+                       String username,    //用户名
+                       String password)    //密码
     {
         try {
             String driver;
@@ -50,7 +50,7 @@ public class DbUtilsTool {
 
 
     /* 关闭数据库连接 */
-    public  void closeConn() {
+    public void closeConn() {
         try {
             if (conn != null) {
                 conn.close();
@@ -61,7 +61,7 @@ public class DbUtilsTool {
     }
 
     /* 查询（返回Array结果） */
-    public  Object[] queryArray(String sql, Object... params) {
+    public Object[] queryArray(String sql, Object... params) {
         Object[] result = null;
         try {
             result = runner.query(conn, sql, new ArrayHandler(), params);
@@ -72,7 +72,7 @@ public class DbUtilsTool {
     }
 
     /* 查询（返回ArrayList结果） */
-    public  List<Object[]> queryArrayList(String sql, Object... params) {
+    public List<Object[]> queryArrayList(String sql, Object... params) {
         List<Object[]> result = null;
         try {
             result = runner.query(conn, sql, new ArrayListHandler(), params);
@@ -83,7 +83,7 @@ public class DbUtilsTool {
     }
 
     /* 查询（返回Map结果） */
-    public  Map<String, Object> queryMap(String sql, Object... params) {
+    public Map<String, Object> queryMap(String sql, Object... params) {
         Map<String, Object> result = null;
         try {
             result = runner.query(conn, sql, new MapHandler(), params);
@@ -94,7 +94,7 @@ public class DbUtilsTool {
     }
 
     /* 查询（返回MapList结果） */
-    public  List<Map<String, Object>> queryMapList(String sql, Object... params) {
+    public List<Map<String, Object>> queryMapList(String sql, Object... params) {
         List<Map<String, Object>> result = null;
         try {
             result = runner.query(conn, sql, new MapListHandler(), params);
@@ -105,7 +105,7 @@ public class DbUtilsTool {
     }
 
     /* 查询（返回Bean结果） */
-    public  <T> T queryBean(Class<T> cls, Map<String, String> map, String sql, Object... params) {
+    public <T> T queryBean(Class<T> cls, Map<String, String> map, String sql, Object... params) {
         T result = null;
         try {
             if (map != null) {
@@ -120,7 +120,7 @@ public class DbUtilsTool {
     }
 
     /* 查询（返回BeanList结果） */
-    public  <T> List<T> queryBeanList(Class<T> cls, Map<String, String> map,  String sql, Object... params) {
+    public <T> List<T> queryBeanList(Class<T> cls, Map<String, String> map, String sql, Object... params) {
         List<T> result = null;
         try {
             if (map != null) {
@@ -135,7 +135,7 @@ public class DbUtilsTool {
     }
 
     /* 查询指定列名的值（单条数据） */
-    public  <T> T queryColumn(String column,  String sql, Object... params) {
+    public <T> T queryColumn(String column, String sql, Object... params) {
         T result = null;
         try {
             result = runner.query(conn, sql, new ScalarHandler<T>(column), params);
@@ -146,7 +146,7 @@ public class DbUtilsTool {
     }
 
     /* 查询指定列名的值（多条数据） */
-    public  <T> List<T> queryColumnList(String column,  String sql, Object... params) {
+    public <T> List<T> queryColumnList(String column, String sql, Object... params) {
         List<T> result = null;
         try {
             result = runner.query(conn, sql, new ColumnListHandler<T>(column), params);
@@ -157,7 +157,7 @@ public class DbUtilsTool {
     }
 
     /* 查询指定列名对应的记录映射 */
-    public  <T> Map<T, Map<String, Object>> queryKeyMap(String column, String sql, Object... params) {
+    public <T> Map<T, Map<String, Object>> queryKeyMap(String column, String sql, Object... params) {
         Map<T, Map<String, Object>> result = null;
         try {
             result = runner.query(conn, sql, new KeyedHandler<T>(column), params);
@@ -168,7 +168,7 @@ public class DbUtilsTool {
     }
 
     /* 更新（包括UPDATE、INSERT、DELETE，返回受影响的行数） */
-    public  int update(String sql, Object... params) {
+    public int update(String sql, Object... params) {
         int result = 0;
         try {
             result = runner.update(conn, sql, params);

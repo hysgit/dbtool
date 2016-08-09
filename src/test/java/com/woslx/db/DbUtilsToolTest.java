@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by hy on 8/9/16.
  */
@@ -14,9 +12,8 @@ public class DbUtilsToolTest {
     private DbUtilsTool dbUtilsTool;
 
     @Before
-    public void setUp()
-    {
-        dbUtilsTool = new DbUtilsTool("MySQL","localhost","3306","mysql","root","mysql");
+    public void setUp() {
+        dbUtilsTool = new DbUtilsTool("MySQL", "localhost", "3306", "mysql", "root", "mysql");
     }
 
     @Test
