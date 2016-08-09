@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.Map;
 
 public class DbUtilsTool {
-    private static final QueryRunner runner = new QueryRunner();
-    private Connection conn;
+    private  final QueryRunner runner = new QueryRunner();
+    private  Connection conn;
 
-    public DbUtilsTool(String type,      //数据库类型
-                       String host,      //主机ip
-                       String port,      //主机端口
-                       String name,      //数据库名
-                       String username,  //用户名
-                       String password)//密码
+    public  DbUtilsTool(String type,        //数据库类型
+                        String host,        //主机ip
+                        String port,        //主机端口
+                        String name,        //数据库名
+                        String username,    //用户名
+                        String password)    //密码
     {
         try {
             String driver;
@@ -46,7 +46,6 @@ public class DbUtilsTool {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
 

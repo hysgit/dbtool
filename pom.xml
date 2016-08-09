@@ -52,6 +52,22 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -64,7 +80,7 @@
             </url>
         </repository>
         <snapshotRepository>
-            <id>deploymentRepo_snapshot</id>
+            <id>nexus-snapshots</id>
             <name>Nexus Snapshot Repository</name>
             <url>
                 http://127.0.0.1:8081/nexus/content/repositories/snapshots/
